@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { Toaster } from 'react-hot-toast';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import Navbar from './components/ui/Navbar';
-import Hero from './components/sections/Hero';
-import Experience from './components/sections/Experience';
-import Projects from './components/sections/Projects';
-import Skills from './components/sections/Skills';
-import AgentChat from './components/chat/AgentChat';
-import Footer from './components/ui/Footer';
-import AdminPanel from './components/admin/AdminPanel';
-import AdminLoginModal from './components/admin/AdminLoginModal';
-import './index.css';
+import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import Navbar from "./components/ui/Navbar";
+import Hero from "./components/sections/Hero";
+import Experience from "./components/sections/Experience";
+import Projects from "./components/sections/Projects";
+import Skills from "./components/sections/Skills";
+import AgentChat from "./components/chat/AgentChat";
+import Footer from "./components/ui/Footer";
+import AdminPanel from "./components/admin/AdminPanel";
+import AdminLoginModal from "./components/admin/AdminLoginModal";
+import "./index.css";
 
 function AppInner() {
   const { isAdmin } = useAuth();
@@ -21,6 +21,10 @@ function AppInner() {
     if (isAdmin) setAdminOpen(true);
     else setLoginOpen(true);
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
 
   return (
     <>
@@ -36,7 +40,10 @@ function AppInner() {
       <AdminLoginModal
         isOpen={loginOpen}
         onClose={() => setLoginOpen(false)}
-        onSuccess={() => { setLoginOpen(false); setAdminOpen(true); }}
+        onSuccess={() => {
+          setLoginOpen(false);
+          setAdminOpen(true);
+        }}
       />
       <AdminPanel isOpen={adminOpen} onClose={() => setAdminOpen(false)} />
     </>
@@ -50,11 +57,11 @@ export default function App() {
         position="top-right"
         toastOptions={{
           style: {
-            background: '#0d1424',
-            color: '#f0f4ff',
-            border: '1px solid rgba(255,255,255,0.06)',
-            borderRadius: '12px',
-            fontSize: '13px',
+            background: "#0d1424",
+            color: "#f0f4ff",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderRadius: "12px",
+            fontSize: "13px",
           },
         }}
       />
